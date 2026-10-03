@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="uz"><head><meta charset="utf-8"><title>Bir Piyola</title>
+<style>
+@font-face{font-family:Unbounded;src:url('fonts/Unbounded-Variable.ttf');font-weight:200 900}
+@font-face{font-family:Syne;src:url('fonts/Syne-Variable.ttf');font-weight:400 800}
+@font-face{font-family:JBM;src:url('fonts/JetBrainsMono-Variable.ttf');font-weight:100 800}
+:root{--green:#0F2A24;--amber:#E8A33D;--terra:#D64B2A;--cream:#F6EFE3;--sage:#7FB29A;--mist:#CFE3D8}
+*{transition:none!important;animation:none!important;box-sizing:border-box}
+html,body{margin:0;width:1920px;height:1080px;overflow:hidden;background:var(--green)}
+#stage{position:relative;width:1920px;height:1080px;overflow:hidden;background:var(--green)}
+.scene{position:absolute;inset:0;overflow:hidden;display:none}
+.abs{position:absolute}
+.txt{position:absolute;left:0;top:0;white-space:nowrap;line-height:1;font-kerning:normal;-webkit-font-smoothing:antialiased}
+.unb{font-family:Unbounded;font-weight:900;letter-spacing:-0.01em}
+.syne{font-family:Syne;font-weight:800}
+.jbm{font-family:JBM;font-weight:500;letter-spacing:0.12em}
+.g,.w{display:inline-block}
+.g.sp{white-space:pre}
+svg.full{position:absolute;inset:0;overflow:visible}
+.gl{position:absolute;top:0;width:1px;height:1080px;background:var(--cream);transform-origin:top}
+.rip{transform-box:fill-box;transform-origin:center}
+#flash{position:absolute;inset:0;pointer-events:none;opacity:0}
+#flashbar{position:absolute;left:0;top:520px;width:1920px;height:40px;background:var(--cream);opacity:0;pointer-events:none}
+#dbg{position:absolute;left:12px;top:8px;font:14px JBM;color:#fff;background:rgba(0,0,0,.5);padding:4px 8px;display:none;z-index:99}
+</style></head>
+<body>
+<div id="stage">
+
+<!-- S1 : Piyola tushadi -->
+<section class="scene" id="s1" style="background:var(--green)">
+  <div class="grid"></div>
+  <svg class="full" viewBox="0 0 1920 1080" width="1920" height="1080">
+    <circle class="rip" cx="960" cy="440" r="260" fill="none" stroke="#7FB29A" stroke-width="3"/>
+    <circle class="rip" cx="960" cy="440" r="260" fill="none" stroke="#7FB29A" stroke-width="3"/>
+    <circle class="rip" cx="960" cy="440" r="260" fill="none" stroke="#7FB29A" stroke-width="3"/>
+  </svg>
+  <div id="s1piy" class="abs" style="left:700px;top:180px;width:520px;height:520px;will-change:transform">
+    <div class="abs" style="inset:0;border-radius:50%;background:var(--amber)"></div>
+    <svg viewBox="0 0 520 520" width="520" height="520" class="abs" style="inset:0"><circle id="s1ring" cx="260" cy="260" r="200" fill="none" stroke="#F6EFE3" stroke-width="6"/></svg>
+  </div>
+  <div id="s1h" class="txt unb" data-x="960" data-anchor="c" data-bl="900" style="font-size:180px;color:var(--cream)">QAYNADI.</div>
+</section>
+
+<!-- S2 : Bir piyola. Bir dunyo. -->
+<section class="scene" id="s2" style="background:var(--amber)">
+  <div id="s2g" class="abs" style="inset:0">
+    <div id="s2a" class="txt unb" data-x="242" data-bl="500" data-fit="1436" style="font-size:170px;color:var(--green);clip-path:inset(0 0 50% 0)">Bir piyola.</div>
+    <div id="s2b" class="txt unb" data-x="242" data-bl="500" data-fit="1436" style="font-size:170px;color:var(--green);clip-path:inset(50% 0 0 0)">Bir piyola.</div>
+    <div id="s2r" class="abs" style="left:242px;top:566px;width:1436px;height:8px;background:var(--terra)"></div>
+    <div id="s2c" class="txt syne" data-x="388" data-bl="720" style="font-size:150px;color:var(--green)">Bir dunyo.</div>
+  </div>
+  <div class="abs s2guide" style="left:241px;top:96px;width:2px;height:888px;background:var(--cream);transform-origin:top"></div>
+  <div class="abs s2guide" style="left:1677px;top:96px;width:2px;height:888px;background:var(--cream);transform-origin:top"></div>
+</section>
+
+<!-- S3 : Hovur ko'tariladi -->
+<section class="scene" id="s3" style="background:var(--terra)">
+  <div id="s3rim" class="abs" style="left:680px;top:871px;width:560px;height:10px;background:var(--green)"></div>
+  <svg class="full" id="s3svg" viewBox="0 0 1920 1080" width="1920" height="1080"></svg>
+  <div id="s3w1" class="txt unb" data-x="96" data-bl="460" style="font-size:150px;color:var(--green)">Hovur</div>
+  <div id="s3w2" class="txt unb" data-x="1824" data-anchor="r" data-bl="640" data-fit="1500" style="font-size:150px;color:var(--green)">ko'tariladi</div>
+</section>
+
+<!-- S4 : Choy bahona, suhbat asosiy. -->
+<section class="scene" id="s4" style="background:var(--green)">
+  <svg class="full" viewBox="0 0 1920 1080" width="1920" height="1080">
+    <path id="s4q" d="M0 1080 L0 660 A420 420 0 0 1 420 1080 Z" style="fill:var(--amber);transform-origin:0px 1080px"/>
+  </svg>
+  <div id="s4l1" class="txt syne" data-x="242" data-bl="470" style="font-size:120px;color:var(--sage)">Choy bahona,</div>
+  <div id="s4l2" class="txt unb" data-x="1678" data-anchor="r" data-bl="690" data-fit="1436" style="font-size:150px;color:var(--cream)">suhbat asosiy.</div>
+  <div id="s4sq" class="abs" style="left:1572px;top:285px;width:90px;height:90px;background:var(--terra)"></div>
+</section>
+
+<!-- S5 : To'rt ta'm -->
+<section class="scene" id="s5" style="background:var(--sage)">
+  <div class="txt unb s5w" data-x="960" data-anchor="c" data-bl="640" data-fit="1728" style="font-size:260px;color:var(--cream)">Ko'k.</div>
+  <div class="txt unb s5w" data-x="960" data-anchor="c" data-bl="640" data-fit="1728" style="font-size:260px;color:var(--cream)">Qora.</div>
+  <div class="txt unb s5w" data-x="960" data-anchor="c" data-bl="640" data-fit="1728" style="font-size:260px;color:var(--green)">Shirin.</div>
+  <div class="txt unb s5w" data-x="960" data-anchor="c" data-bl="640" data-fit="1728" style="font-size:260px;color:var(--cream)">Achchiq.</div>
+  <div id="s5u" class="abs" style="left:388px;top:712px;width:1144px;height:4px;background:var(--cream);transform-origin:left"></div>
+  <div id="s5c" class="txt jbm" data-x="1824" data-anchor="r" data-bl="150" style="font-size:36px;color:var(--cream)">01 / 04</div>
+  <div class="txt syne s5s" data-x="242" data-bl="150" style="font-size:64px;color:var(--cream)">Ko'k.</div>
+  <div class="txt syne s5s" data-x="242" data-bl="222" style="font-size:64px;color:var(--cream)">Qora.</div>
+  <div class="txt syne s5s" data-x="242" data-bl="294" style="font-size:64px;color:var(--cream)">Shirin.</div>
+  <div class="txt syne s5s" data-x="242" data-bl="366" style="font-size:64px;color:var(--cream)">Achchiq.</div>
+</section>
+
+<!-- S6 : Yarim piyola -->
+<section class="scene" id="s6" style="background:transparent">
+  <div id="s6panel" class="abs" style="left:-340px;top:-160px;width:2600px;height:1400px;background:var(--green);will-change:transform"></div>
+  <div id="s6cg" class="abs" style="left:1284px;top:280px;width:520px;height:520px">
+    <div id="s6fill" class="abs" style="left:5px;top:5px;width:510px;height:510px;border-radius:50%;background:var(--amber)"></div>
+    <svg viewBox="0 0 520 520" width="520" height="520" class="abs" style="inset:0;overflow:visible"><circle id="s6ring" cx="260" cy="260" r="260" fill="none" stroke="#F6EFE3" stroke-width="10" stroke-dasharray="1633.63" style="transform:rotate(-90deg);transform-origin:260px 260px"/></svg>
+  </div>
+  <div id="s6tg" class="abs" style="inset:0">
+    <div id="s6l1" class="txt unb" data-x="96" data-bl="480" data-fit="1150" style="font-size:110px;color:var(--cream)">Yarim piyola —</div>
+    <div id="s6l2" class="txt syne" data-x="96" data-bl="610" data-fit="1100" style="font-size:100px;color:var(--amber)">hurmat belgisi.</div>
+    <div id="s6lab" class="txt jbm" data-x="96" data-bl="704" style="font-size:36px;letter-spacing:.14em;color:var(--sage)">AN'ANA</div>
+  </div>
+</section>
+
+<!-- S7 : SHOSHILMA. -->
+<section class="scene" id="s7" style="background:var(--green)">
+  <div class="abs s7rule" style="left:96px;top:358px;width:1728px;height:4px;background:var(--amber)"></div>
+  <div class="abs s7rule" style="left:96px;top:618px;width:1728px;height:4px;background:var(--amber)"></div>
+  <svg class="full" viewBox="0 0 1920 1080" width="1920" height="1080">
+    <circle class="rip s7ring" cx="1500" cy="542" r="420" fill="none" stroke="#E8A33D" stroke-width="3" vector-effect="non-scaling-stroke"/>
+    <circle class="rip s7ring" cx="1500" cy="542" r="420" fill="none" stroke="#E8A33D" stroke-width="3" vector-effect="non-scaling-stroke"/>
+  </svg>
+  <div id="s7g" class="abs" style="inset:0;transform-origin:960px 480px">
+    <div id="s7h" class="txt unb" data-x="927" data-anchor="c" data-bl="560" data-fit="1662" data-fitls="0.02em" style="font-size:230px;color:var(--cream)">SHOSHILMA</div>
+    <div id="s7dot" class="abs" style="left:1700px;top:524px;width:36px;height:36px;border-radius:50%;background:var(--terra)"></div>
+  </div>
+  <div id="s7hd" class="abs" style="left:930px;top:450px;width:60px;height:60px;border-radius:50%;background:var(--amber)"></div> <!-- hand-off dot, in front of the word; S8's circle takes over at the same 60 px -->
+  <div id="s7cap" class="txt syne" data-x="960" data-anchor="c" data-bl="740" style="font-size:90px;color:var(--sage)"><span class="w">Ichkariga</span><span class="g sp"> </span><span class="w">kir,</span><span class="g sp"> </span><span class="w">o'tir.</span></div>
+</section>
+
+<!-- S8 : CHOY. end card (background is transparent until 25.9 so S7's collapsing word stays visible under the growing circle) -->
+<section class="scene" id="s8" style="background:transparent">
+  <div class="grid"></div>
+  <svg class="full" viewBox="0 0 1920 1080" width="1920" height="1080">
+    <circle id="s8dash" class="rip" cx="960" cy="380" r="215" fill="none" stroke="#CFE3D8" stroke-width="2" stroke-dasharray="6 18"/>
+  </svg>
+  <div id="s8cg" class="abs" style="left:780px;top:200px;width:360px;height:360px">
+    <div class="abs" style="inset:0;border-radius:50%;background:var(--amber)"></div>
+    <svg viewBox="0 0 360 360" width="360" height="360" class="abs" style="inset:0"><circle id="s8ring" cx="180" cy="180" r="120" fill="none" stroke="#F6EFE3" stroke-width="5" stroke-dasharray="753.98" style="transform:rotate(-90deg);transform-origin:180px 180px"/></svg>
+  </div>
+  <div id="s8t" class="txt unb" data-x="960" data-anchor="c" data-bl="760" style="font-size:190px;color:var(--cream)">CHOY.</div>
+  <div id="s8rule" class="abs" style="left:840px;top:812px;width:240px;height:4px;background:var(--amber)"></div>
+  <div id="s8sign" class="txt jbm" data-x="960" data-anchor="c" data-bl="868" style="font-size:42px;color:var(--sage)">Bir piyola, bir nafas.</div>
+</section>
+
+<div id="flash"></div>
+<div id="flashbar"></div>
+<div id="dbg"></div>
+</div>
+
+<script>
+'use strict';
+/* ---------- palette / grid ---------- */
+const C={green:'#0F2A24',amber:'#E8A33D',terra:'#D64B2A',cream:'#F6EFE3',sage:'#7FB29A',mist:'#CFE3D8'};
+const GX=[96,242,388,534,680,826,972,1118,1264,1410,1556,1702,1824];
+
+/* ---------- easing library ---------- */
+const clamp=(v,a=0,b=1)=>v<a?a:v>b?b:v;
+const lerp=(a,b,p)=>a+(b-a)*p, mix=lerp;
+const linear=t=>t;
+const expoOut=t=>t>=1?1:1-Math.pow(2,-10*t);
+const expoIn=t=>t<=0?0:Math.pow(2,10*(t-1));
+const expoInOut=t=>t<=0?0:t>=1?1:t<.5?Math.pow(2,20*t-10)/2:(2-Math.pow(2,-20*t+10))/2;
+const cubicIn=t=>t*t*t;
+const cubicOut=t=>1-Math.pow(1-t,3);
+const cubicInOut=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
+const quintOut=t=>1-Math.pow(1-t,5);
+const mkBack=c1=>{const c3=c1+1;return t=>1+c3*Math.pow(t-1,3)+c1*Math.pow(t-1,2)};
+const backOut=mkBack(1.70158), softBackOut=mkBack(0.9), backOut1=mkBack(1.0);
+const sineInOut=t=>-(Math.cos(Math.PI*t)-1)/2;
+const elasticOut=t=>t<=0?0:t>=1?1:Math.pow(2,-10*t)*Math.sin((t*10-.75)*(2*Math.PI/3))+1;
+const smoothstep=(a,b,x)=>{const p=clamp((x-a)/(b-a));return p*p*(3-2*p)};
+const breath=(t,period,amp)=>1+amp*Math.sin(2*Math.PI*t/period);
+const kf=(t,a,b,e=expoOut)=>e(clamp((t-a)/(b-a)));
+const stagger=(t,start,step,k,dur,e=expoOut)=>kf(t,start+step*k,start+step*k+dur,e);
+const prng=seed=>()=>{seed=(seed*1664525+1013904223)>>>0;return seed/4294967296};
+const TAU=Math.PI*2;
+
+/* ---------- DOM helpers ---------- */
+const $=(s,r=document)=>r.querySelector(s);
+const $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const T=(el,v)=>{el.style.transform=v};
+const O=(el,v)=>{el.style.opacity=clamp(v)};
+const px=v=>v+'px';
+function glyphs(el){const s=el.textContent;el.textContent='';const out=[];for(const ch of s){const sp=document.createElement('span');sp.className='g'+(ch===' '?' sp':'');sp.textContent=ch;el.appendChild(sp);out.push(sp)}return out}
+function makeGrid(container){return GX.map(x=>{const d=document.createElement('div');d.className='gl';d.style.left=px(x);container.appendChild(d);return d})}
+function baselineRatio(e){const p=document.createElement('span');p.style.cssText='display:inline-block;width:0;height:0;vertical-align:baseline';e.appendChild(p);const r=(p.getBoundingClientRect().top-e.getBoundingClientRect().top)/parseFloat(getComputedStyle(e).fontSize);e.removeChild(p);return r}
+/* fit-to-width + baseline/anchor placement (run once after fonts) */
+function layoutText(){
+  for(const e of $$('.txt[data-bl]')){
+    e.style.transform='none';
+    const fs0=parseFloat(getComputedStyle(e).fontSize);
+    const lsSaved=e.style.letterSpacing;
+    if(e.dataset.fitls) e.style.letterSpacing=e.dataset.fitls;
+    const fit=+e.dataset.fit;
+    if(fit){const w=e.getBoundingClientRect().width;if(w>fit)e.style.fontSize=px(fs0*fit/w)}
+    const fs=parseFloat(getComputedStyle(e).fontSize);
+    const r=baselineRatio(e);
+    let w=e.getBoundingClientRect().width;
+    if(e.dataset.fitls){e._wMax=w;e.style.letterSpacing=lsSaved;w=e.getBoundingClientRect().width;e._wMin=w}
+    e._w=w;e._fs=fs;e._r=r;
+    e.style.top=px(+e.dataset.bl-r*fs);
+    const x=+e.dataset.x,an=e.dataset.anchor||'l';
+    e.style.left=px(an==='l'?x:an==='r'?x-w:x-w/2);
+  }
+}
+
+/* ---------- scenes ---------- */
+const scenes=[];
+const scene=(id,t0,t1,build)=>{const el=$('#'+id);const o={el,t0,t1,update:null};o.update=build(el,o);scenes.push(o)};
+
+/* S1 — hook: piyola falls, ripples, QAYNADI. */
+scene('s1',0,3.0,(el)=>{
+  const grid=makeGrid($('.grid',el));
+  const piy=$('#s1piy',el), ring=$('#s1ring',el), rips=$$('.rip',el), h=$('#s1h',el), hg=glyphs(h);
+  return t=>{
+    const gOp=0.14*(1-kf(t,2.5,2.8,cubicIn));
+    // grid seeded so frame 0 already shows lines 1-3 at ~0.66/0.45/0.09 (poster frame is never empty)
+    grid.forEach((g,k)=>{const s=-0.055+0.025*k;T(g,`scaleY(${kf(t,s,s+0.35)})`);O(g,gOp)});
+    let ty=0,sc;
+    // piyola starts with ~37 % of the disc already inside the frame at t=0 (centre y≈-40 at scale 0.6)
+    if(t<0.5){const p=backOut(clamp(t/0.5));ty=mix(-480,0,p);sc=mix(0.6,1,p)}
+    else if(t<0.8) sc=1;
+    else if(t<2.6) sc=breath(t-0.8,1.6,0.015);
+    else sc=mix(breath(1.8,1.6,0.015),7,kf(t,2.6,3.0,cubicInOut));
+    T(piy,`translateY(${ty}px) scale(${sc})`);
+    O(ring,1-kf(t,2.6,2.72,cubicIn)); // inner ring leaves before the swell so it never sweeps through QAYNADI.
+    rips.forEach((r,k)=>{const s=0.5+0.12*k;if(t<s){O(r,0);return}const p=kf(t,s,s+1.2);T(r,`scale(${mix(0.4,[1,1.35,1.7][k],p)})`);O(r,0.9*(1-kf(t,s,s+1.2,cubicIn)))});
+    hg.forEach((g,k)=>{const p=stagger(t,0.9,0.05,k,0.45);T(g,`translateY(${mix(140,0,p)}px)`);O(g,p)});
+    T(h,`translateY(${mix(0,-6,kf(t,1.75,2.6,linear))}px)`);O(h,1-kf(t,2.6,2.9,cubicIn));
+  };
+});
+
+/* S2 — split slide on amber */
+scene('s2',3.0,6.5,(el)=>{
+  const g=$('#s2g',el),a=$('#s2a',el),b=$('#s2b',el),r=$('#s2r',el),c=$('#s2c',el),guides=$$('.s2guide',el);
+  return t=>{
+    const p=softBackOut(clamp((t-3)/0.6)), ex=kf(t,5.9,6.35,cubicIn);
+    T(a,`translateX(${mix(-400,0,p)-1900*ex}px)`);T(b,`translateX(${mix(400,0,p)-1900*ex}px)`);
+    T(g,`translateX(${mix(0,-12,kf(t,4.4,5.9,linear))}px)`); // 8 px/s drift (hold-rule max)
+    const gb=t>4.4?breath(t-4.4,1.5,0.01):1;
+    guides.forEach(gd=>{T(gd,`scaleY(${kf(t,3.2,3.7,cubicInOut)*gb})`);O(gd,0.6*(1-kf(t,6.2,6.5,linear)))});
+    if(t<5.9){r.style.transformOrigin='left';T(r,`scaleX(${kf(t,3.5,3.9,cubicInOut)*(t>4.4?breath(t-4.4,1.5,0.01):1)})`)}
+    else{r.style.transformOrigin='right';T(r,`scaleX(${1-kf(t,5.9,6.3,cubicIn)})`)}
+    const q=kf(t,3.9,4.4);c.style.clipPath=`inset(0 0 ${(1-q)*100}% 0)`;
+    T(c,`translate(${1900*kf(t,6.05,6.5,cubicIn)}px,${mix(20,0,q)}px)`); // line 2 exit lands exactly on the 6.5 beat
+  };
+});
+
+/* S3 — steam draw-on on terracotta */
+scene('s3',6.5,10.1,(el)=>{
+  const rim=$('#s3rim',el), svg=$('#s3svg',el), w1=$('#s3w1',el), w2=$('#s3w2',el);
+  const g1=glyphs(w1), g2=glyphs(w2);
+  const NS='http://www.w3.org/2000/svg';
+  // knock-out mask: the steam is cut away in a band around `ko'tariladi` once the word has landed,
+  // so the lines read as passing BEHIND a solid word instead of tangling with its glyphs
+  const mask=document.createElementNS(NS,'mask');mask.id='s3mask';mask.setAttribute('maskUnits','userSpaceOnUse');mask.setAttribute('x',0);mask.setAttribute('y',0);mask.setAttribute('width',1920);mask.setAttribute('height',1080);
+  const mw=document.createElementNS(NS,'rect');mw.setAttribute('x',0);mw.setAttribute('y',0);mw.setAttribute('width',1920);mw.setAttribute('height',1080);mw.setAttribute('fill','#fff');
+  const mk=document.createElementNS(NS,'rect');mk.setAttribute('fill','#000');mk.setAttribute('x',0);mk.setAttribute('y',0);mk.setAttribute('width',0);mk.setAttribute('height',0);
+  mask.appendChild(mw);mask.appendChild(mk);svg.appendChild(mask);
+  const sg=document.createElementNS(NS,'g');sg.setAttribute('mask','url(#s3mask)');svg.appendChild(sg);
+  const steam=[740,850,960,1070,1180].map(x0=>{
+    const g=document.createElementNS(NS,'g');
+    const p=document.createElementNS(NS,'path');
+    p.setAttribute('d',`M ${x0} 870 C ${x0+60} 720, ${x0-60} 600, ${x0} 500 S ${x0+60} 300, ${x0} 140`);
+    p.setAttribute('fill','none');p.setAttribute('stroke',C.cream);p.setAttribute('stroke-width','5');p.setAttribute('stroke-linecap','round');
+    g.appendChild(p);sg.appendChild(g);return {g,p,L:0};
+  });
+  el._init=()=>{steam.forEach(s=>{s.L=s.p.getTotalLength();s.p.style.strokeDasharray=s.L});
+    const pad=28, top=+w2.dataset.bl-0.78*w2._fs-pad, bot=+w2.dataset.bl+0.06*w2._fs+pad;
+    mk.setAttribute('x',parseFloat(w2.style.left)-pad);mk.setAttribute('width',w2._w+2*pad);mk.setAttribute('y',top);mk.setAttribute('height',bot-top)};
+  return t=>{
+    T(rim,`scaleX(${kf(t,6.5,6.8)})`);
+    steam.forEach((s,k)=>{const st=6.6+0.15*k;const d=kf(t,st,st+1.6,cubicInOut), u=kf(t,9.4,9.9,cubicIn);
+      s.p.style.strokeDashoffset=s.L*(1-d)-s.L*u;T(s.g,`translateX(${14*Math.sin(TAU*(t-6.5)/2.4+k*1.1)}px)`)});
+    g1.forEach((g,k)=>{const p=stagger(t,7.0,0.06,k,0.5);T(g,`translateY(${mix(120,0,p)}px)`);O(g,p)});
+    g2.forEach((g,k)=>{const p=stagger(t,7.4,0.04,k,0.5);T(g,`translateY(${mix(120,0,p)}px)`);O(g,p)});
+    const dy=mix(0,-5,kf(t,8.35,9.4,linear)), e=kf(t,9.4,9.8,cubicIn), sc=mix(1,0.85,e);
+    for(const w of [w1,w2]){T(w,`translateY(${dy}px) scale(${sc})`);O(w,1-e)}
+    mk.setAttribute('fill-opacity',kf(t,7.6,8.3,cubicInOut)*(1-e)); // knock-out follows the word's landing / exit
+  };
+});
+
+/* S4 — contrast pair (mask reveal in) */
+scene('s4',9.5,14.0,(el)=>{
+  const q=$('#s4q',el), l1=$('#s4l1',el), l2=$('#s4l2',el), sq=$('#s4sq',el), g2=glyphs(l2);
+  return t=>{
+    // mask reveal spans the whole 9.5-10.1 window (cubicInOut) and S4's entrances overlap it, so no blank green field
+    el.style.clipPath=t<10.1?`circle(${1400*kf(t,9.5,10.1,cubicInOut)}px at 960px 880px)`:'none';
+    let rot=mix(-90,0,kf(t,9.75,10.45)); if(t>13.5) rot=mix(0,-90,kf(t,13.5,14.0,cubicIn));
+    T(q,`rotate(${rot}deg) scale(${t>10.45?breath(t-10.45,3,0.01):1})`);
+    const p1=kf(t,9.95,10.45), sx=1-kf(t,13.5,13.85,cubicIn);
+    T(l1,`translateX(${mix(-300,0,p1)+mix(0,6,kf(t,11.75,13.5,linear))}px) scaleX(${sx})`);O(l1,p1);
+    if(t<10.1)O(sq,0);else{O(sq,1);T(sq,`rotate(${mix(0,90,kf(t,10.1,14.0,linear))}deg) scale(${backOut(clamp((t-10.1)/0.4))*(1-kf(t,13.5,13.85,cubicIn))})`)}
+    g2.forEach((g,k)=>{const p=backOut(clamp((t-10.4-0.04*k)/0.5));T(g,`translateX(${mix(90,0,p)}px)`);O(g,p)});
+    l2.style.letterSpacing=(t>11.75?-0.01+0.01*(0.5+0.5*Math.sin(TAU*(t-11.75))):-0.01)+'em';
+    T(l2,`scaleX(${sx})`);
+  };
+});
+
+/* S5 — beat slam list */
+scene('s5',14.0,18.1,(el)=>{
+  const words=$$('.s5w',el), u=$('#s5u',el), cnt=$('#s5c',el), stack=$$('.s5s',el);
+  const bgs=[C.sage,C.green,C.amber,C.terra], cols=[C.green,C.cream,C.green,C.cream];
+  words[0].style.color=C.green; // Ko'k. green on sage (cream on sage was ~2.1:1)
+  return t=>{
+    const k=t<14.5?0:t<15?1:t<15.5?2:3, tk=14+0.5*k;
+    el.style.background=bgs[k];
+    words.forEach((w,j)=>{if(j!==k){O(w,0);return}
+      const p=kf(t+1/30,tk,tk+0.3);let sc=mix(1.6,1,p),op=p;
+      if(k===3&&t>17.3){const e=kf(t,17.3,17.8,cubicIn);sc=mix(1,1.3,e);op=1-e}
+      T(w,`translateY(${-3*(t-tk)}px) scale(${sc})`);O(w,op)});
+    const fo=1-kf(t,17.3,17.6,linear);
+    u.style.background=cols[k];T(u,`scaleX(${kf(t,tk+0.1,tk+0.35,cubicInOut)})`);O(u,fo);
+    cnt.textContent=`0${k+1} / 04`;cnt.style.color=cols[k];const pc=kf(t,tk,tk+0.2);T(cnt,`translateY(${mix(-40,0,pc)}px)`);O(cnt,pc*fo);
+    stack.forEach((s,j)=>{const p=stagger(t,16.2,0.08,j,0.45), e=kf(t,17.3,17.7,cubicIn);
+      T(s,`translateX(${mix(mix(-120,0,p),-400,e)}px)`);O(s,0.5*p*(1-e))});
+  };
+});
+
+/* S6 — Yarim piyola (diagonal wipe in) */
+scene('s6',17.5,22.0,(el)=>{
+  const panel=$('#s6panel',el), cg=$('#s6cg',el), fill=$('#s6fill',el), ring=$('#s6ring',el), tg=$('#s6tg',el);
+  const l1=$('#s6l1',el), l2=$('#s6l2',el), lab=$('#s6lab',el), g1=glyphs(l1);
+  return t=>{
+    // wipe edge crosses the frame 17.67-17.93 (cubicInOut); the outline / glyphs start as soon as their area is covered
+    if(t<18.1){panel.style.display='block';el.style.background='transparent';T(panel,`skewX(-12deg) translateX(${mix(-2600,0,kf(t,17.5,18.1,cubicInOut))}px)`)}
+    else{panel.style.display='none';el.style.background=C.green}
+    ring.style.strokeDashoffset=1633.63*(1-kf(t,18.0,18.7)); // starts only after the wipe panel has covered the ring area (edge is past x=1900 at 18.0)
+    let P=mix(100,50,kf(t,18.35,19.35,cubicInOut)); if(t>19.35)P=50-3*Math.sin(Math.PI*clamp((t-19.35)/0.25));
+    fill.style.clipPath=`inset(${P}% 0 0 0)`;
+    let sc=t<20.3?1:t<21.45?breath(t-20.3,2.2,0.015):mix(breath(1.15,2.2,0.015),0.2,kf(t,21.45,21.95,cubicIn));
+    T(cg,`scale(${sc})`);O(cg,1-kf(t,21.45,21.95,cubicIn));
+    g1.forEach((g,k)=>{const p=stagger(t,17.95,0.04,k,0.45);T(g,`translateX(${mix(-30,0,p)}px)`);O(g,p)});
+    l2.style.clipPath=`inset(0 ${(1-kf(t,19.4,20.0))*100}% 0 0)`;
+    const pl=kf(t,20.0,20.3,cubicOut);T(lab,`translateY(${mix(10,0,pl)}px)`);O(lab,pl*(t>20.3?0.85+0.15*Math.sin(TAU*(t-20.3)/1.5):1));
+    const e=kf(t,21.4,21.8,cubicIn);T(tg,`translate(${mix(0,5,kf(t,20.3,21.4,linear))}px,${mix(0,-60,e)}px)`);O(tg,1-e);
+  };
+});
+
+/* S7 — SHOSHILMA. slow down */
+scene('s7',22.0,25.9,(el)=>{
+  const rules=$$('.s7rule',el), rings=$$('.s7ring',el), g=$('#s7g',el), h=$('#s7h',el), dot=$('#s7dot',el), cap=$('#s7cap',el), words=$$('.w',cap), hd=$('#s7hd',el);
+  return t=>{
+    const sc=t<22.5?mix(3,0.98,kf(t,22,22.5)):mix(0.98,1,softBackOut(clamp((t-22.5)/0.2)));
+    const ls=mix(-0.01,0.02,kf(t,23.6,25.3,linear));
+    h.style.letterSpacing=ls+'em';
+    const W=mix(h._wMin,h._wMax,(ls+0.01)/0.03), Wv=W-ls*h._fs, left=927-Wv/2;
+    // hero is present on the beat frame (0.35 seed) and fades 25.8-25.9 so the last residue of the collapse never pops
+    h.style.left=px(left);T(h,`scale(${sc})`);O(h,(0.6+0.4*kf(t,22,22.5))*(1-kf(t,25.8,25.9,cubicIn)));
+    const dotX=left+Wv+30;dot.style.left=px(dotX-18);
+    T(dot,`translateY(${mix(-300,0,backOut(clamp((t-22.4)/0.5)))}px)`);O(dot,t<22.4?0:1-kf(t,25.3,25.7,cubicIn));
+    const fo=1-kf(t,25.3,25.7,cubicIn);
+    rules.forEach(r=>{T(r,`scaleX(${kf(t,22.3,22.8,cubicInOut)*(t>23.6?breath(t-23.6,2,0.003):1)})`);O(r,fo)});
+    words.forEach((w,j)=>{const p=kf(t,23+0.85*j,23.5+0.85*j,cubicInOut);T(w,`translateY(${mix(60,0,p)}px)`);O(w,p)});O(cap,fo);
+    // breath rings: r 18 -> 150 so they stay inside the frame (dot sits at x~1766)
+    rings.forEach((r,k)=>{const s=[23.0,24.5][k];r.setAttribute('cx',dotX);if(t<s){O(r,0);return}
+      T(r,`scale(${mix(18/420,150/420,kf(t,s,s+1.8))})`);O(r,0.5*(1-kf(t,s,s+1.8,cubicIn)))});
+    T(g,`scale(${1-kf(t,25.3,25.9,cubicIn)})`);
+    O(hd,kf(t,25.5,25.7,cubicOut)); // sits IN FRONT of the word (DOM order) and is fully visible at 25.7, when S8's circle takes over at the same 60 px
+  };
+});
+
+/* S8 — end card */
+scene('s8',25.7,30.0,(el)=>{
+  const grid=makeGrid($('.grid',el)), dash=$('#s8dash',el), cg=$('#s8cg',el), ring=$('#s8ring',el), title=$('#s8t',el), tg=glyphs(title), rule=$('#s8rule',el), sign=$('#s8sign',el);
+  return t=>{
+    el.style.background=t<25.9?'transparent':C.green; // shape hand-off: S7 keeps collapsing beneath until 25.9
+    const sc=t<26.35?mix(1/6,1,(p=>softBackOut(p*p))(clamp((t-25.7)/0.65))):t<26.4?1:breath(t-26.4,4,0.03); // slow start out of the hand-off dot, soft overshoot
+    T(cg,`translateY(${mix(100,0,kf(t,25.7,26.2))}px) scale(${sc})`);
+    ring.style.strokeDashoffset=753.98*(1-kf(t,26.2,26.8));
+    O(dash,0.45*kf(t,26.4,26.9,linear));T(dash,`rotate(${4*Math.max(0,t-26.4)}deg)`);
+    const go=0.10*kf(t,26.6,27.1,cubicOut);grid.forEach(g=>{T(g,'none');O(g,go)});
+    tg.forEach((g,k)=>{const p=stagger(t,26.3,0.07,k,0.5);T(g,`translateY(${mix(80,0,p)}px)`);O(g,p)});
+    T(rule,`scaleX(${kf(t,26.9,27.2,cubicInOut)})`);
+    O(sign,kf(t,27.1,27.45,linear));
+  };
+});
+
+/* ---------- global FX ---------- */
+const flash=$('#flash'), flashbar=$('#flashbar'), dbg=$('#dbg');
+function fx(t){
+  let op=0,col=C.cream;
+  if(t>=6.5&&t<6.567){op=0.6*(1-(t-6.5)/0.0667)}
+  else if(t>=22.0&&t<22.067){op=t<22.03?1.0:0.2;col=C.amber} // hard amber hit: solid on the beat frame, 0.2 on the next
+  flash.style.background=col;O(flash,op);
+  if(t>=13.85&&t<13.95){T(flashbar,`scaleX(${kf(t,13.85,13.95)})`);O(flashbar,1)}
+  else if(t>=13.95&&t<14.05){T(flashbar,'scaleX(1)');O(flashbar,1-(t-13.95)/0.1)}
+  else O(flashbar,0);
+}
+
+/* ---------- seek ---------- */
+const DEBUG=/debug/.test(location.search);
+window.seek=t=>{
+  t=Math.max(0,Math.min(29.9999,+t||0));
+  for(const s of scenes){const on=t>=s.t0&&t<s.t1;s.el.style.display=on?'block':'none';if(on)s.update(t)}
+  fx(t);
+  if(DEBUG){dbg.style.display='block';dbg.textContent='t='+t.toFixed(3)+'  f='+Math.round(t*30)}else dbg.style.display='none';
+  return true;
+};
+
+/* ---------- init ---------- */
+window.ready=(async()=>{
+  await document.fonts.ready;
+  await Promise.all(['900 100px Unbounded','800 100px Syne','500 100px JBM'].map(f=>document.fonts.load(f)));
+  for(const s of scenes)s.el.style.display='block';
+  layoutText();
+  for(const s of scenes)if(s.el._init)s.el._init();
+  window.seek(0);
+  return true;
+})();
+if(DEBUG){window.ready.then(()=>{const u=new URL(location.href);const t=+u.searchParams.get('t')||0;window.seek(t)})}
+</script>
+</body></html>
